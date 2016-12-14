@@ -8,11 +8,6 @@ Xprev = X0;
 Xnow = X1;
 iterations = max_iter;
 
-cla;
-p = ezplot(equation);
-set(p, 'Color', 'black', 'LineWidth', 2);
-hold on;
-
 tic;
 for i = 1:max_iter
     fx = double(getfx(equation, Xnow));

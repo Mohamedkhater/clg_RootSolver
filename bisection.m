@@ -8,11 +8,6 @@ Xr = ((Xl + Xu) / 2.0);
 
 iterations = max_iter;
 
-%  cla;
-% p = ezplot(equation);
-% set(p, 'Color', 'black', 'LineWidth', 2);
-% hold on;
-% 
 tic;
 % ylMin=getfx(equation, Xl);
 % yuMax=getfx(equation, Xu);
