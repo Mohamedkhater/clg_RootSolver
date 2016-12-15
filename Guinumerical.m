@@ -153,7 +153,7 @@ switch method
     case 'Newton Raphson'
         answer = newton_raphson(xo, error, imax, func, handles);
     case 'Secant'
-        answer = secant(xo, xl, error, imax, func, handles);
+        answer = secant(xi, xi2, error, imax, func, handles);
         
 end
 
