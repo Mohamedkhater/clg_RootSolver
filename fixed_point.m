@@ -11,7 +11,9 @@ Xnow = X0;
 tic;
 for i = 1:max_iter
     Xnew = double(getfx(g, Xnow));
-    
+    if isnan(Xnew)
+        break;
+    end
     error = double(abs(Xnew - Xnow));
     
     table(i,:) = [Xnow Xnew error];
@@ -25,9 +27,9 @@ for i = 1:max_iter
 end
 
 exec_time = toc;
-set(handles.execution_time_text, 'String', exec_time);
+set(handles.extime, 'String', exec_time);
 set(handles.table, 'Data', table);
-set(handles.num_iterations_text, 'String', iterations);
+set(handles.itrtaken, 'String', iterations);
 result = Xnew;
 
 hold off;

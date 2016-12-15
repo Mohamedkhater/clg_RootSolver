@@ -78,30 +78,38 @@ varargout{1} = handles.output;
 % --- Executes when selected object is changed in ButtonGroup.
 function ButtonGroup_SelectionChangeFcn(hObject, eventdata, handles)
 try
-		% Get the values of the radio buttons in this group.
- 		bisection = get(handles.radioBisection, 'Value');
-		openMethod = get(handles.radioNewtonRaphson, 'Value') || get(handles.radioFixedPoint, 'Value');
-		secant = get(handles.radioSecant, 'Value');
-		
-        if(secant) 
-           SecantSetView(handles, 'on');
-           OpenMethodSetView(handles,'off');
-           BisectionSetView(handles,'off');
-        elseif(openMethod)
-           OpenMethodSetView(handles,'on');
-           SecantSetView(handles, 'off');
-           BisectionSetView(handles,'off');
-        elseif(bisection)
-           BisectionSetView(handles,'on');
-           OpenMethodSetView(handles,'off');
-           SecantSetView(handles, 'off');
-        end           
-        
-	catch ME
-		errorMessage = sprintf('Error in function uipanel1_SelectionChangeFcn.\n\nError Message:\n%s', ME.message);
-		fprintf('%s\n', errorMessage);
-		uiwait(warndlg(errorMessage));
-	end
+    set(handles.xu, 'String','');
+    set(handles.xl, 'String','');
+    set(handles.xo, 'String','');
+    set(handles.xi, 'String','');
+    set(handles.xi2, 'String','');
+    set(handles.maxItr, 'String','');
+    set(handles.epsilon, 'String','');
+    
+    % Get the values of the radio buttons in this group.
+    bisection = get(handles.radioBisection, 'Value');
+    openMethod = get(handles.radioNewtonRaphson, 'Value') || get(handles.radioFixedPoint, 'Value');
+    secant = get(handles.radioSecant, 'Value');
+    
+    if(secant)
+        SecantSetView(handles, 'on');
+        OpenMethodSetView(handles,'off');
+        BisectionSetView(handles,'off');
+    elseif(openMethod)
+        OpenMethodSetView(handles,'on');
+        SecantSetView(handles, 'off');
+        BisectionSetView(handles,'off');
+    elseif(bisection)
+        BisectionSetView(handles,'on');
+        OpenMethodSetView(handles,'off');
+        SecantSetView(handles, 'off');
+    end
+    
+catch ME
+    errorMessage = sprintf('Error in function uipanel1_SelectionChangeFcn.\n\nError Message:\n%s', ME.message);
+    fprintf('%s\n', errorMessage);
+    uiwait(warndlg(errorMessage));
+end
 
 function eqbox_Callback(hObject, eventdata, handles)
 axes(handles.axes1);
